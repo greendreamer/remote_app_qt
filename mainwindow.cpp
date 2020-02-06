@@ -5,9 +5,11 @@
 #include "settingsdialog.h"
 #include "logger.h"
 #include "confighandler.h"
+#include "statushandler.h"
 
 Logger *logger;
 SettingsDialog *settingsDialog;
+StatusHandler *statusHandler;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,13 +21,10 @@ MainWindow::MainWindow(QWidget *parent)
     logger = new Logger(this, logFileName, ui->loggerOutput);
     logger->write(Logger::Level::INFO, "Logger Initilized!");
 
-
-
     settingsDialog = new SettingsDialog(this);
     settingsDialog->setModal((true));
 
-
-
+    statusHandler = new StatusHandler(this, settingsDialog, ui->b_refresh, ui->l_socket_status, ui->l_camera_status);
 
 }
 
@@ -88,10 +87,10 @@ void MainWindow::on_b_keyboardDown_released() { logger->write(Logger::Level::DEB
 void MainWindow::on_b_keyboardRight_released() { logger->write(Logger::Level::DEBUG, "Keyboard Right released"); }
 
 //Keyboard Action Keys
-void MainWindow::on_b_keyboardAction_1_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 1 pressed"); }
-void MainWindow::on_b_keyboardAction_2_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 2 pressed"); }
-void MainWindow::on_b_keyboardAction_3_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 3 pressed"); }
-void MainWindow::on_b_keyboardAction_4_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 4 pressed"); }
+void MainWindow::on_b_keyboardAction_1_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 1 pressed"), statusHandler->setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED); }
+void MainWindow::on_b_keyboardAction_2_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 2 pressed"), statusHandler->setSocketStatus(StatusHandler::StatusIndicator::CONNECTED); }
+void MainWindow::on_b_keyboardAction_3_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 3 pressed"), statusHandler->setCameraStatus(StatusHandler::StatusIndicator::DISCONNECTED); }
+void MainWindow::on_b_keyboardAction_4_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 4 pressed"), statusHandler->setCameraStatus(StatusHandler::StatusIndicator::CONNECTED); }
 
 //Keyboard speed throttle
 void MainWindow::on_s_keyboardThrottle_sliderMoved(int position) { ui->l_keyboardThrottle->setText(QStringLiteral("Throttle: %1%").arg(position)); }
