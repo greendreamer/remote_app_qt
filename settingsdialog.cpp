@@ -44,8 +44,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
         setSocket_En("false");
     }
 
-    setCamera_IP(ui->socketIP_Box->text());
-    setCamera_Port(ui->socketIP_Box->text());
+    setCamera_IP(ui->cameraIP_Box->text());
+    setCamera_Port(ui->cameraPort_Box->text());
     if(ui->cameraEn_check->isChecked()) {
         setCamera_En("true");
     } else {
