@@ -25,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     confighandler.h \
+    constants.h \
     logger.h \
     mainwindow.h \
     settingsdialog.h \
