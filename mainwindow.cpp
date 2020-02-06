@@ -1,4 +1,5 @@
 #include <string>
+#include <QDebug>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -10,6 +11,8 @@
 Logger *logger;
 SettingsDialog *settingsDialog;
 StatusHandler *statusHandler;
+
+int const MainWindow::EXIT_CODE_REBOOT = -128572932;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     statusHandler = new StatusHandler(this, settingsDialog, ui->b_refresh, ui->l_socket_status, ui->l_camera_status);
 
+    connect(ui->b_keyboardUp, SIGNAL (pressed()), this, SLOT (slotReboot()));
 }
 
 MainWindow::~MainWindow()
@@ -85,6 +89,12 @@ void MainWindow::on_b_keyboardUp_released() { logger->write(Logger::Level::DEBUG
 void MainWindow::on_b_keyboardLeft_released() { logger->write(Logger::Level::DEBUG, "Keyboard Left released"); }
 void MainWindow::on_b_keyboardDown_released() { logger->write(Logger::Level::DEBUG, "Keyboard Down released"); }
 void MainWindow::on_b_keyboardRight_released() { logger->write(Logger::Level::DEBUG, "Keyboard Right released"); }
+
+void MainWindow::slotReboot()
+{
+    qDebug() << "Performing application reboot...";
+    qApp->exit(MainWindow::EXIT_CODE_REBOOT);
+}
 
 //Keyboard Action Keys
 void MainWindow::on_b_keyboardAction_1_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 1 pressed"), statusHandler->setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED); }

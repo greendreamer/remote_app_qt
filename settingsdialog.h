@@ -12,7 +12,6 @@ class SettingsDialog;
 class SettingsDialog : public QDialog
 {
     Q_OBJECT
-
 public:
     explicit SettingsDialog(QWidget *parent = nullptr);
     ~SettingsDialog();
@@ -34,8 +33,6 @@ public:
     void setCamera_IP(const QString &value);
     void setCamera_Port(const QString &value);
     void setCamera_En(const QString &value);
-
-
 
 private slots:
     void on_b_cancel_pressed();

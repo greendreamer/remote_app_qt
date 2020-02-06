@@ -10,7 +10,6 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     config = new ConfigHandler(this);
-
     //get data from config and but into appropriate boxes
     QString configData = config->getData();
     QStringList splitConfigData = configData.split("\n");
