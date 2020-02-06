@@ -1,0 +1,64 @@
+#include "settingsdialog.h"
+#include "ui_settingsdialog.h"
+
+SettingsDialog::SettingsDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::SettingsDialog)
+{
+    ui->setupUi(this);
+}
+
+SettingsDialog::~SettingsDialog()
+{
+    delete ui;
+}
+
+//Getters
+QString SettingsDialog::getSocket_IP() const { return Socket_IP; }
+QString SettingsDialog::getSocket_Port() const { return Socket_Port; }
+bool SettingsDialog::getSocket_En() const { return Socket_En; }
+
+QString SettingsDialog::getCamera_IP() const { return Camera_IP; }
+QString SettingsDialog::getCamera_Port() const { return Camera_Port; }
+bool SettingsDialog::getCamera_En() const { return Camera_En; }
+
+//Setters
+void SettingsDialog::setSocket_IP(const QString &value) { Socket_IP = value; }
+void SettingsDialog::setSocket_Port(const QString &value) { Socket_Port = value; }
+void SettingsDialog::setSocket_En(bool value) { Socket_En = value; }
+
+void SettingsDialog::setCamera_IP(const QString &value) { Camera_IP = value; }
+void SettingsDialog::setCamera_Port(const QString &value) { Camera_Port = value; }
+void SettingsDialog::setCamera_En(bool value) { Camera_En = value; }
+
+//Event Triggers
+void SettingsDialog::on_b_cancel_pressed() { close(); }
+void SettingsDialog::on_b_apply_pressed() { connect(ui->b_apply, SIGNAL(clicked()), this, SIGNAL(ApplyClicked(const QString&))); }
+
+void SettingsDialog::on_socketIP_Box_editingFinished() { setSocket_IP(ui->socketIP_Box->text()); }
+void SettingsDialog::on_socketPort_Box_editingFinished() { setSocket_Port(ui->socketPort_Box->text()); }
+void SettingsDialog::on_cameraIP_Box_editingFinished() { setCamera_IP(ui->cameraIP_Box->text()); }
+void SettingsDialog::on_cameraPort_Box_editingFinished() { setCamera_Port(ui->cameraPort_Box->text()); }
+
+void SettingsDialog::on_socketEn_check_stateChanged(int arg1)
+{
+    if (arg1 == 1) {
+        setSocket_En(true);
+    } else {
+        setSocket_En(false);
+    }
+}
+
+void SettingsDialog::on_cameraEn_check_stateChanged(int arg1)
+{
+    if (arg1 == 1) {
+        setCamera_En(true);
+    } else {
+        setCamera_En(false);
+    }
+}
+
+QString SettingsDialog::getAllTyped() const {
+    //SIP, SP, SEN, CIP, CP, CEN
+    return (Socket_IP + Socket_Port + Socket_En + Camera_IP + Camera_Port + Camera_En);
+}

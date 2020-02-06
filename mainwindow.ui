@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_9" stretch="1,0">
+    <item>
+     <widget class="QSplitter" name="splitter_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::Rounded</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="usesScrollButtons">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="t_keyboard">
+         <attribute name="title">
+          <string>Keyboard</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <property name="horizontalSpacing">
+             <number>14</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>6</number>
+            </property>
+            <item row="2" column="2">
+             <widget class="QPushButton" name="b_keyboardRight">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>→</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QPushButton" name="b_keyboardDown">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>↓</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QPushButton" name="b_keyboardLeft">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>←</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="b_keyboardUp">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>↑</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_keyboardAction_1">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 1</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_keyboardAction_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 2</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_keyboardAction_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 3</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_keyboardAction_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 4</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QLabel" name="l_keyboardThrottle">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Throttle: 0%</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QSlider" name="s_keyboardThrottle">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="cursor">
+               <cursorShape>SizeVerCursor</cursorShape>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="singleStep">
+               <number>25</number>
+              </property>
+              <property name="pageStep">
+               <number>25</number>
+              </property>
+              <property name="value">
+               <number>0</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::NoTicks</enum>
+              </property>
+              <property name="tickInterval">
+               <number>25</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="t_joystick">
+         <attribute name="title">
+          <string>Joystick</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,0,0">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,1,1,1">
+            <item row="2" column="0" alignment="Qt::AlignHCenter">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Right</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" alignment="Qt::AlignHCenter">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Left</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="l_leftTrigger">
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Trigger: 0%</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QSlider" name="s_leftTrigger_Throttle">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="2">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="l_rightJoystickY">
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Y-Axis: 0%</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QSlider" name="s_rightJoystickY_Throttle">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="1">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="l_leftJoystickX">
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>X-Axis: 0%</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QSlider" name="s_leftJoystickX_Throttle">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0" colspan="4">
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="l_leftJoystickY">
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Y-Axis: 0%</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QSlider" name="s_leftJoystickY_Throttle">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="1">
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="l_rightJoystickX">
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>X-Axis: 0%</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QSlider" name="s_rightJoystickX_Throttle">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="3">
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="l_rightTrigger">
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Trigger: 0%</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QSlider" name="s_rightTrigger_Throttle">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_joystickAction_1">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 1</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_joystickAction_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 2</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_joystickAction_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 3</string>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="b_joystickAction_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Action 4</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QLabel" name="l_joystickThrottle">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Throttle: 0%</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QSlider" name="s_joystickThrottle">
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QTextEdit" name="loggerOutput">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="lineWidth">
+         <number>1</number>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="undoRedoEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGraphicsView" name="graphicsView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="b_refresh">
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="l_statu_text">
+          <property name="text">
+           <string>Status:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="l_status">
+          <property name="text">
+           <string>disconnected</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
