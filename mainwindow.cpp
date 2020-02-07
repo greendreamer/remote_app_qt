@@ -27,7 +27,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     statusHandler = new StatusHandler(this, settingsDialog, ui->b_refresh, ui->l_socket_status, ui->l_camera_status);
 
-    connect(ui->b_keyboardUp, SIGNAL (pressed()), this, SLOT (slotReboot()));
 }
 
 MainWindow::~MainWindow()
