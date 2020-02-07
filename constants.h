@@ -7,7 +7,6 @@ namespace StatusConstants {
     const static QString connectedHTML = "<font color=\"green\">";
     const static QString endHTML = "</font>";
 }
-
 namespace SystemConstants {
     const static int Exit_Code_Reboot = -128572932;
 }

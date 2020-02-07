@@ -62,7 +62,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="usesScrollButtons">
          <bool>true</bool>
@@ -689,6 +689,7 @@
          </widget>
         </item>
         <item>
+
          <widget class="QLabel" name="l_socket_status">
           <property name="font">
            <font>
@@ -766,7 +767,7 @@
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
