@@ -2,6 +2,8 @@
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
 #include "confighandler.h"
+#include "constants.h"
+
 ConfigHandler *config;
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
@@ -35,6 +37,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
                 } break;
         }
     }
+
+    //Set global variables to current text values from loaded config
     setSocket_IP(ui->socketIP_Box->text());
     setSocket_Port(ui->socketPort_Box->text());
     if(ui->socketEn_check->isChecked()) {
@@ -76,8 +80,10 @@ void SettingsDialog::setCamera_Port(const QString &value) { Camera_Port = value;
 void SettingsDialog::setCamera_En(const QString &value) { Camera_En = value; }
 
 //Event Triggers
-void SettingsDialog::on_b_cancel_pressed() { close(); }
-void SettingsDialog::on_b_apply_pressed() { config->setData(this->getAllTyped()), close(); }
+void SettingsDialog::on_b_cancel_pressed() {
+    close();
+}
+void SettingsDialog::on_b_apply_pressed() { config->setData(this->getAllTyped()), close(), slotReboot(); }
 
 //TODO Limit what users can put into text
 void SettingsDialog::on_socketIP_Box_editingFinished() {
@@ -109,6 +115,11 @@ void SettingsDialog::on_cameraEn_check_stateChanged(int arg1)
     } else {
         setCamera_En("false");
     }
+}
+
+void SettingsDialog::slotReboot()
+{
+    qApp->exit(SystemConstants::Exit_Code_Reboot);
 }
 
 QString SettingsDialog::getAllTyped() const {

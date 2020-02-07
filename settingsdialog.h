@@ -46,6 +46,8 @@ private slots:
 
     void on_cameraEn_check_stateChanged(int arg1);
 
+    void slotReboot();
+
 public slots:
     QString getAllTyped() const;
 private:

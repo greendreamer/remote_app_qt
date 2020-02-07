@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "constants.h"
 
 #include <QApplication>
 
@@ -10,7 +11,7 @@ int main(int argc, char *argv[])
         MainWindow w;
         w.showMaximized();
         currentExitCode = a.exec();
-    } while(currentExitCode == MainWindow::EXIT_CODE_REBOOT);
+    } while(currentExitCode == SystemConstants::Exit_Code_Reboot);
 
     return currentExitCode;
 

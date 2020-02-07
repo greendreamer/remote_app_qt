@@ -14,7 +14,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    static int const EXIT_CODE_REBOOT;
 
 private slots:
     void on_toolButton_clicked();
