@@ -19,7 +19,7 @@ Logger::Logger(QObject *parent,
     if (!fileName.isEmpty()) {
         file = new QFile;
         file->setFileName(fileName);
-        file->open(QIODevice::Append | QIODevice::Text);
+        file->open(QIODevice::Truncate | QIODevice::Append | QIODevice::Text);
     }
 }
 

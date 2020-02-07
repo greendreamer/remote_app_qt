@@ -78,7 +78,7 @@
              <enum>QLayout::SetDefaultConstraint</enum>
             </property>
             <property name="horizontalSpacing">
-             <number>14</number>
+             <number>12</number>
             </property>
             <property name="verticalSpacing">
              <number>6</number>
@@ -182,6 +182,25 @@
            </layout>
           </item>
           <item>
+           <widget class="Line" name="line_2">
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item alignment="Qt::AlignHCenter">
              <widget class="QPushButton" name="b_keyboardAction_1">
@@ -262,6 +281,22 @@
            </layout>
           </item>
           <item>
+           <widget class="Line" name="line_3">
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="l_keyboardThrottle">
@@ -321,7 +356,7 @@
          <attribute name="title">
           <string>Joystick</string>
          </attribute>
-         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,0,0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,0,0,0,0">
           <item>
            <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,1,1,1">
             <item row="2" column="0" alignment="Qt::AlignHCenter">
@@ -509,6 +544,22 @@
             </item>
            </layout>
           </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="Line" name="line_4">
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item alignment="Qt::AlignHCenter">
@@ -594,6 +645,22 @@
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <widget class="Line" name="line_5">
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>0</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -689,7 +756,6 @@
          </widget>
         </item>
         <item>
-
          <widget class="QLabel" name="l_socket_status">
           <property name="font">
            <font>
