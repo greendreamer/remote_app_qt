@@ -47,11 +47,25 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="socketEn_check">
-          <property name="text">
-           <string>Enabled</string>
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
           </property>
-         </widget>
+          <item>
+           <widget class="QCheckBox" name="socketEn_check">
+            <property name="text">
+             <string>Enabled</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="socketDetailed_check">
+            <property name="text">
+             <string>Detailed</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
