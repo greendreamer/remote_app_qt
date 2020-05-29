@@ -60,6 +60,10 @@ protected:
     void keyReleaseEvent(QKeyEvent* event);
 
 private:
+    float up = 0.0;
+    float down = 0.0;
+    float left = 0.0;
+    float right = 0.0;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

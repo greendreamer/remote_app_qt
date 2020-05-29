@@ -81,7 +81,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
             case QAbstractSocket::SocketState::UnconnectedState: logger->write(Logger::Level::WARNING, "Unconnected"); break;
         }
 
-        if (!(socketHandler->sendMovementData("0.0,0.0,0.0"))){
+        if (!(socketHandler->sendMovementData(QString::number(up+down) + "," + QString::number(left+right) + "," + "0.0"))){
             logger->write(Logger::Level::WARNING, "Could not send data");
         }
     }
@@ -102,7 +102,7 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event) {
             case Qt::Key_F3: ui->b_keyboardAction_3->setDown(false); break;
             case Qt::Key_F4: ui->b_keyboardAction_4->setDown(false); break;
         }
-        if (!(socketHandler->sendMovementData("0.0,0.0,0.0"))){
+        if (!(socketHandler->sendMovementData(QString::number(up+down) + "," + QString::number(left+right) + "," + "0.0"))){
             logger->write(Logger::Level::WARNING, "Could not send data");
         }
     }
@@ -115,15 +115,15 @@ void MainWindow::on_toolButton_clicked()
 }
 
 //Keyboard Movement Keys
-void MainWindow::on_b_keyboardUp_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Up pressed"); }
-void MainWindow::on_b_keyboardLeft_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Left pressed"); }
-void MainWindow::on_b_keyboardDown_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Down pressed"); }
-void MainWindow::on_b_keyboardRight_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Right pressed"); }
+void MainWindow::on_b_keyboardUp_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Up pressed"); up = 1.0; }
+void MainWindow::on_b_keyboardLeft_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Left pressed"); left = -1.0; }
+void MainWindow::on_b_keyboardDown_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Down pressed"); down = -1.0; }
+void MainWindow::on_b_keyboardRight_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Right pressed"); right = 1.0; }
 //----------------
-void MainWindow::on_b_keyboardUp_released() { logger->write(Logger::Level::DEBUG, "Keyboard Up released"); }
-void MainWindow::on_b_keyboardLeft_released() { logger->write(Logger::Level::DEBUG, "Keyboard Left released"); }
-void MainWindow::on_b_keyboardDown_released() { logger->write(Logger::Level::DEBUG, "Keyboard Down released"); }
-void MainWindow::on_b_keyboardRight_released() { logger->write(Logger::Level::DEBUG, "Keyboard Right released"); }
+void MainWindow::on_b_keyboardUp_released() { logger->write(Logger::Level::DEBUG, "Keyboard Up released"); up = 0.0; }
+void MainWindow::on_b_keyboardLeft_released() { logger->write(Logger::Level::DEBUG, "Keyboard Left released"); left = 0.0; }
+void MainWindow::on_b_keyboardDown_released() { logger->write(Logger::Level::DEBUG, "Keyboard Down released"); down = 0.0; }
+void MainWindow::on_b_keyboardRight_released() { logger->write(Logger::Level::DEBUG, "Keyboard Right released"); right = 0.0; }
 
 //Keyboard Action Keys
 void MainWindow::on_b_keyboardAction_1_pressed() { logger->write(Logger::Level::DEBUG, "Keyboard Action 1 pressed"), statusHandler->setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED); }
