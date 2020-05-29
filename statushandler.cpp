@@ -24,6 +24,40 @@ StatusHandler::StatusHandler(QObject *parent,
     l_cameraStatus->setTextFormat(Qt::RichText);
     setCameraStatus(StatusIndicator::DISCONNECTED);
 }
+void StatusHandler::updateStatus(QAbstractSocket::SocketState socketStatus, QAbstractSocket::SocketState cameraStatus) {
+    updateStatus(socketStatus, cameraStatus, false);
+}
+
+void StatusHandler::updateStatus(QAbstractSocket::SocketState socketStatus, QAbstractSocket::SocketState cameraStatus, bool detailed) {
+    if (detailed) {
+        switch(socketStatus)
+        {
+            case QAbstractSocket::SocketState::BoundState: setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED); break;
+            case QAbstractSocket::SocketState::ClosingState: setSocketStatus(StatusHandler::StatusIndicator::CLOSING); break;
+            case QAbstractSocket::SocketState::ConnectedState: setSocketStatus(StatusHandler::StatusIndicator::CONNECTED); break;
+            case QAbstractSocket::SocketState::ConnectingState: setSocketStatus(StatusHandler::StatusIndicator::CONNECTING); break;
+            case QAbstractSocket::SocketState::HostLookupState: setSocketStatus(StatusHandler::StatusIndicator::LOOKUP); break;
+            case QAbstractSocket::SocketState::UnconnectedState: setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED); break;
+            default: setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED);
+        }
+    } else {
+        switch(socketStatus)
+        {
+            case QAbstractSocket::SocketState::ConnectedState: setSocketStatus(StatusHandler::StatusIndicator::CONNECTED); break;
+            case QAbstractSocket::SocketState::ConnectingState: setSocketStatus(StatusHandler::StatusIndicator::CONNECTING); break;
+            case QAbstractSocket::SocketState::UnconnectedState: setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED); break;
+            default: setSocketStatus(StatusHandler::StatusIndicator::DISCONNECTED);
+        }
+    }
+
+    switch(cameraStatus)
+    {
+        case QAbstractSocket::SocketState::ConnectedState: setCameraStatus(StatusHandler::StatusIndicator::CONNECTED); break;
+        case QAbstractSocket::SocketState::ConnectingState: setCameraStatus(StatusHandler::StatusIndicator::CONNECTING); break;
+        case QAbstractSocket::SocketState::UnconnectedState: setCameraStatus(StatusHandler::StatusIndicator::DISCONNECTED); break;
+        default: setCameraStatus(StatusHandler::StatusIndicator::DISCONNECTED);
+    }
+}
 
 void StatusHandler::setSocketStatus(StatusHandler::StatusIndicator status)
 {
@@ -32,6 +66,9 @@ void StatusHandler::setSocketStatus(StatusHandler::StatusIndicator status)
         case StatusIndicator::DISCONNECTED: html = StatusConstants::disconnectedHTML + "disconnected"; break;
         case StatusIndicator::CONNECTING: html = StatusConstants::connectingHTML + "connecting | " + m_settings->getSocket_IP() + ":" + m_settings->getSocket_Port(); break;
         case StatusIndicator::CONNECTED: html = StatusConstants::connectedHTML + "connected | " + m_settings->getSocket_IP() + ":" + m_settings->getSocket_Port(); break;
+        case StatusIndicator::BOUND: html = StatusConstants::boundHTML + "bound | " + m_settings->getSocket_IP() + ":" + m_settings->getSocket_Port(); break;
+        case StatusIndicator::LOOKUP: html = StatusConstants::lookupHTML + "lookup"; break;
+        case StatusIndicator::CLOSING: html = StatusConstants::closingHTML + "closing | " + m_settings->getSocket_IP() + ":" + m_settings->getSocket_Port(); break;
         default: html = StatusConstants::disconnectedHTML; break;
     }
     l_socketStatus->setText(html + StatusConstants::endHTML);

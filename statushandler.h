@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QAbstractButton>
 #include <QLabel>
+#include <QUdpSocket>
 #include "settingsdialog.h"
 
 class StatusHandler : public QObject
@@ -14,7 +15,11 @@ public:
     {
         DISCONNECTED,
         CONNECTED,
-        CONNECTING
+        CONNECTING,
+        BOUND,
+        CLOSING,
+        LOOKUP
+
     };
     explicit StatusHandler(QObject *parent = nullptr, SettingsDialog *settings = nullptr,
                            QAbstractButton *refresh = nullptr,
@@ -25,6 +30,9 @@ public:
     StatusHandler::StatusIndicator getSocketStatus();
     void setCameraStatus(StatusIndicator status);
     StatusHandler::StatusIndicator getCameraStatus();
+    void updateStatus(QAbstractSocket::SocketState socketStatus, QAbstractSocket::SocketState cameraStatus);
+    void updateStatus(QAbstractSocket::SocketState socketStatus, QAbstractSocket::SocketState cameraStatus, bool detailed);
+
 private:
     SettingsDialog *m_settings;
     QAbstractButton *b_refresh;

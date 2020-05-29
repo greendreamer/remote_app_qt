@@ -27,9 +27,15 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
                 } else {
                     ui->socketEn_check->setChecked(false);
                 } break;
-            case 3: ui->cameraIP_Box->setText(splitConfigData.at(i)); break;
-            case 4: ui->cameraPort_Box->setText(splitConfigData.at(i)); break;
-            case 5:
+            case 3:
+                if(splitConfigData.at(i) == "true") {
+                    ui->socketDetailed_check->setChecked(true);
+                } else {
+                    ui->socketDetailed_check->setChecked(false);
+                } break;
+            case 4: ui->cameraIP_Box->setText(splitConfigData.at(i)); break;
+            case 5: ui->cameraPort_Box->setText(splitConfigData.at(i)); break;
+            case 6:
                  if(splitConfigData.at(i) == "true") {
                      ui->cameraEn_check->setChecked(true);
                 } else {
@@ -66,6 +72,7 @@ SettingsDialog::~SettingsDialog()
 QString SettingsDialog::getSocket_IP() const { return Socket_IP; }
 QString SettingsDialog::getSocket_Port() const { return Socket_Port; }
 QString SettingsDialog::getSocket_En() const { return Socket_En; }
+QString SettingsDialog::getSocket_Detailed() const { return Socket_Detailed; }
 
 QString SettingsDialog::getCamera_IP() const { return Camera_IP; }
 QString SettingsDialog::getCamera_Port() const { return Camera_Port; }
@@ -74,6 +81,7 @@ QString SettingsDialog::getCamera_En() const { return Camera_En; }
 void SettingsDialog::setSocket_IP(const QString &value) { Socket_IP = value; }
 void SettingsDialog::setSocket_Port(const QString &value) { Socket_Port = value; }
 void SettingsDialog::setSocket_En(const QString &value) { Socket_En = value; }
+void SettingsDialog::setSocket_Detailed(const QString &value) { Socket_Detailed = value; }
 
 void SettingsDialog::setCamera_IP(const QString &value) { Camera_IP = value; }
 void SettingsDialog::setCamera_Port(const QString &value) { Camera_Port = value; }
@@ -108,6 +116,15 @@ void SettingsDialog::on_socketEn_check_stateChanged(int arg1)
     }
 }
 
+void SettingsDialog::on_socketDetailed_check_stateChanged(int arg1)
+{
+    if (arg1 == 2) {
+        setSocket_Detailed("true");
+    } else {
+        setSocket_Detailed("false");
+    }
+}
+
 void SettingsDialog::on_cameraEn_check_stateChanged(int arg1)
 {
     if (arg1 == 2) {
@@ -124,6 +141,6 @@ void SettingsDialog::slotReboot()
 
 QString SettingsDialog::getAllTyped() const {
     const QString delim = "\n";
-    //SIP, SP, SEN, CIP, CP, CEN
-    return (getSocket_IP() + delim + getSocket_Port() + delim + getSocket_En() + delim + getCamera_IP() + delim + getCamera_Port() + delim + getCamera_En());
+    //SIP, SP, SEN, SDE, CIP, CP, CEN
+    return (getSocket_IP() + delim + getSocket_Port() + delim + getSocket_En() + delim + getSocket_Detailed() + delim+ getCamera_IP() + delim + getCamera_Port() + delim + getCamera_En());
 }

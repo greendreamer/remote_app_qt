@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,6 +21,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     settingsdialog.cpp \
+    sockethandler.cpp \
     statushandler.cpp
 
 HEADERS += \
@@ -29,6 +30,7 @@ HEADERS += \
     logger.h \
     mainwindow.h \
     settingsdialog.h \
+    sockethandler.h \
     statushandler.h
 
 FORMS += \

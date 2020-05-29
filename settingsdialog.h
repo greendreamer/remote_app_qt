@@ -20,10 +20,12 @@ public:
     QString getSocket_IP() const;
     QString getSocket_Port() const;
     QString getSocket_En() const;
+    QString getSocket_Detailed() const;
 
     void setSocket_IP(const QString &value);
     void setSocket_Port(const QString &value);
     void setSocket_En(const QString &value);
+    void setSocket_Detailed(const QString &value);
 
     //Camera
     QString getCamera_IP() const;
@@ -43,6 +45,7 @@ private slots:
     void on_cameraPort_Box_editingFinished();
 
     void on_socketEn_check_stateChanged(int arg1);
+    void on_socketDetailed_check_stateChanged(int arg1);
 
     void on_cameraEn_check_stateChanged(int arg1);
 
@@ -54,6 +57,7 @@ private:
     QString Socket_IP = "Socket IP Placeholder";
     QString Socket_Port = "Socket Port Placeholder";
     QString Socket_En = "false";
+    QString Socket_Detailed = "false";
 
     QString Camera_IP = "Camera IP Placeholder";
     QString Camera_Port = "Camera Port Placeholder";

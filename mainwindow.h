@@ -50,8 +50,10 @@ private slots:
     void on_b_keyboardDown_released();
     void on_b_keyboardRight_released();
 
-public slots:
+    void on_b_refresh_pressed();
+
     void slotReboot();
+    void updateAll();
 
 protected:
     void keyPressEvent(QKeyEvent* event);

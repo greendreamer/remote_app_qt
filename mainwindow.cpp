@@ -1,5 +1,9 @@
 #include <string>
 #include <QDebug>
+#include <QtGamepad/QGamepadManager>
+#include <QtGamepad/QGamepad>
+#include <QTimer>
+
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -7,10 +11,15 @@
 #include "logger.h"
 #include "confighandler.h"
 #include "statushandler.h"
+#include "sockethandler.h"
+#include "constants.h"
 
+QGamepadManager *gamepadManager;
 Logger *logger;
 SettingsDialog *settingsDialog;
 StatusHandler *statusHandler;
+SocketHandler *socketHandler;
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,7 +35,19 @@ MainWindow::MainWindow(QWidget *parent)
     settingsDialog->setModal((true));
 
     statusHandler = new StatusHandler(this, settingsDialog, ui->b_refresh, ui->l_socket_status, ui->l_camera_status);
+    QTimer *updateStatusTimer = new QTimer(this);
+    connect(updateStatusTimer, SIGNAL(timeout()), this, SLOT(updateAll()));
+    updateStatusTimer->start(100);
 
+    logger->write(Logger::Level::INFO, "Movement Socket connecting to: " + settingsDialog->getSocket_IP() + ":" + settingsDialog->getSocket_Port() + " ...");
+
+    socketHandler->connectToServer(settingsDialog->getSocket_IP(),settingsDialog->getSocket_Port());
+
+    if (!(socketHandler->getSocketState() == QAbstractSocket::SocketState::ConnectedState)) {
+        logger->write(Logger::Level::ERROR, "Movement Socket cannot connect to: " + settingsDialog->getSocket_IP() + ":" + settingsDialog->getSocket_Port());
+    } else {
+        logger->write(Logger::Level::INFO, "Movement Socket connected!");
+    }
 }
 
 MainWindow::~MainWindow()
@@ -49,6 +70,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
             case Qt::Key_F3: ui->b_keyboardAction_3->setDown(true), on_b_keyboardAction_3_pressed(); break;
             case Qt::Key_F4: ui->b_keyboardAction_4->setDown(true), on_b_keyboardAction_4_pressed(); break;
         }
+        switch(socketHandler->getSocketState())
+        {
+            case QAbstractSocket::SocketState::BoundState: logger->write(Logger::Level::WARNING, "Bound"); break;
+            case QAbstractSocket::SocketState::ClosingState: logger->write(Logger::Level::WARNING, "Closing"); break;
+            case QAbstractSocket::SocketState::ConnectedState: logger->write(Logger::Level::WARNING, "Connected"); break;
+            case QAbstractSocket::SocketState::ListeningState: logger->write(Logger::Level::WARNING, "Listening"); break;
+            case QAbstractSocket::SocketState::ConnectingState: logger->write(Logger::Level::WARNING, "Bound"); break;
+            case QAbstractSocket::SocketState::HostLookupState: logger->write(Logger::Level::WARNING, "HostLookup"); break;
+            case QAbstractSocket::SocketState::UnconnectedState: logger->write(Logger::Level::WARNING, "Unconnected"); break;
+        }
+
+        if (!(socketHandler->sendMovementData("0.0,0.0,0.0"))){
+            logger->write(Logger::Level::WARNING, "Could not send data");
+        }
     }
 }
 
@@ -66,6 +101,9 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event) {
             case Qt::Key_F2: ui->b_keyboardAction_2->setDown(false); break;
             case Qt::Key_F3: ui->b_keyboardAction_3->setDown(false); break;
             case Qt::Key_F4: ui->b_keyboardAction_4->setDown(false); break;
+        }
+        if (!(socketHandler->sendMovementData("0.0,0.0,0.0"))){
+            logger->write(Logger::Level::WARNING, "Could not send data");
         }
     }
 }
@@ -114,3 +152,14 @@ void MainWindow::on_b_joystickAction_4_pressed() { logger->write(Logger::Level::
 
 //Joystick speed throttle
 void MainWindow::on_s_joystickThrottle_sliderMoved(int position) { ui->l_joystickThrottle->setText(QStringLiteral("Throttle: %1%").arg(position)); }
+
+//Status related
+void MainWindow::on_b_refresh_pressed() { slotReboot(); }
+
+void MainWindow::updateAll() {
+    statusHandler->updateStatus(socketHandler->getSocketState(), QAbstractSocket::SocketState::UnconnectedState, true);
+}
+
+void MainWindow::slotReboot() {
+    qApp->exit(SystemConstants::Exit_Code_Reboot);
+}
