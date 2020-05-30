@@ -1,9 +1,7 @@
 #include <string>
 #include <QDebug>
-#include <QtGamepad/QGamepadManager>
-#include <QtGamepad/QGamepad>
 #include <QTimer>
-
+#include <QGamepadManager>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -12,13 +10,14 @@
 #include "confighandler.h"
 #include "statushandler.h"
 #include "sockethandler.h"
+#include "gamepadhandler.h"
 #include "constants.h"
 
-QGamepadManager *gamepadManager;
 Logger *logger;
 SettingsDialog *settingsDialog;
 StatusHandler *statusHandler;
 SocketHandler *socketHandler;
+GamepadHandler *gamepadHandler;
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -158,6 +157,17 @@ void MainWindow::on_b_refresh_pressed() { slotReboot(); }
 
 void MainWindow::updateAll() {
     statusHandler->updateStatus(socketHandler->getSocketState(), QAbstractSocket::SocketState::UnconnectedState, true);
+    if (gamepadHandler->checkForGamepads() && !gamepadHandler->isGamepadFirstSet())
+    {
+        gamepadHandler->setFirstGamepad();
+    }
+
+    if(gamepadHandler->isGamepadFirstSet()) {
+        connect(gamepadHandler->getFirstGamepad(), &QGamepad::axisLeftXChanged, this, [](double value){
+            qDebug() << "Left X:" << QString::number((value));
+            //logger->write(Logger::Level::DEBUG, "Left X: " + QString::number(value));
+        });
+    }
 }
 
 void MainWindow::slotReboot() {

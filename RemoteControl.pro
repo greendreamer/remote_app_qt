@@ -1,6 +1,6 @@
-QT       += core gui network
+QT       += core gui network widgets gamepad
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 5): QT += widgets
 
 CONFIG += c++11
 
@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     confighandler.cpp \
+    gamepadhandler.cpp \
     logger.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     confighandler.h \
     constants.h \
+    gamepadhandler.h \
     logger.h \
     mainwindow.h \
     settingsdialog.h \
