@@ -44,6 +44,8 @@ private slots:
     void on_b_keyboardLeft_pressed();
     void on_b_keyboardDown_pressed();
     void on_b_keyboardRight_pressed();
+    void on_increaseThrottle_pressed();
+    void on_decreaseThrottle_pressed();
 
     void on_b_keyboardUp_released();
     void on_b_keyboardLeft_released();
@@ -60,10 +62,15 @@ protected:
     void keyReleaseEvent(QKeyEvent* event);
 
 private:
-    float up = 0.0;
-    float down = 0.0;
-    float left = 0.0;
-    float right = 0.0;
+    float kup = 0.0;
+    float kdown = 0.0;
+    float kleft = 0.0;
+    float kright = 0.0;
+
+    float jy = 0.0;
+    float jx = 0.0;
+    float jz = 0.0;
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
