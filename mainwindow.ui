@@ -310,7 +310,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Throttle: 0%</string>
+               <string>Maximum: 0%</string>
               </property>
              </widget>
             </item>
@@ -387,12 +387,18 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>Trigger: 0%</string>
+                 <string>Trigger</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QSlider" name="s_leftTrigger_Throttle">
+                <property name="minimum">
+                 <number>0</number>
+                </property>
                 <property name="maximum">
                  <number>100</number>
                 </property>
@@ -414,12 +420,18 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>Y-Axis: 0%</string>
+                 <string>Y-Axis</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QSlider" name="s_rightJoystickY_Throttle">
+                <property name="minimum">
+                 <number>-100</number>
+                </property>
                 <property name="maximum">
                  <number>100</number>
                 </property>
@@ -441,14 +453,23 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>X-Axis: 0%</string>
+                 <string>X-Axis</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QSlider" name="s_leftJoystickX_Throttle">
+                <property name="minimum">
+                 <number>-100</number>
+                </property>
                 <property name="maximum">
                  <number>100</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
                 </property>
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -475,12 +496,18 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>Y-Axis: 0%</string>
+                 <string>Y-Axis</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QSlider" name="s_leftJoystickY_Throttle">
+                <property name="minimum">
+                 <number>-100</number>
+                </property>
                 <property name="maximum">
                  <number>100</number>
                 </property>
@@ -502,12 +529,18 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>X-Axis: 0%</string>
+                 <string>X-Axis</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QSlider" name="s_rightJoystickX_Throttle">
+                <property name="minimum">
+                 <number>-100</number>
+                </property>
                 <property name="maximum">
                  <number>100</number>
                 </property>
@@ -529,12 +562,18 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>Trigger: 0%</string>
+                 <string>Trigger</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item alignment="Qt::AlignHCenter">
                <widget class="QSlider" name="s_rightTrigger_Throttle">
+                <property name="minimum">
+                 <number>0</number>
+                </property>
                 <property name="maximum">
                  <number>100</number>
                 </property>
@@ -676,7 +715,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Throttle: 0%</string>
+               <string>Maximum: 0%</string>
               </property>
              </widget>
             </item>
