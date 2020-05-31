@@ -14,6 +14,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+private:
+    void on_increaseThrottle_pressed();
+    void on_decreaseThrottle_pressed();
+    void sendKeyboardData();
+    void sendJoystickData();
 
 private slots:
     void on_toolButton_clicked();
@@ -21,12 +26,15 @@ private slots:
     void on_s_joystickThrottle_sliderMoved(int position);
 
     void on_s_leftJoystickX_Throttle_sliderMoved(int position);
+    void on_s_leftJoystickX_Throttle_sliderMovedf(float position);
     void on_s_leftJoystickY_Throttle_sliderMoved(int position);
-    void on_s_leftTrigger_Throttle_sliderMoved(int position);
+    void on_s_leftJoystickY_Throttle_sliderMovedf(float position);
+    //void on_s_leftTrigger_Throttle_sliderMoved(int position);
 
     void on_s_rightJoystickX_Throttle_sliderMoved(int position);
-    void on_s_rightJoystickY_Throttle_sliderMoved(int position);
-    void on_s_rightTrigger_Throttle_sliderMoved(int position);
+    void on_s_rightJoystickX_Throttle_sliderMovedf(float position);
+    //void on_s_rightJoystickY_Throttle_sliderMoved(int position);
+    //void on_s_rightTrigger_Throttle_sliderMoved(int position);
 
     void on_s_keyboardThrottle_sliderMoved(int position);
 
@@ -44,13 +52,15 @@ private slots:
     void on_b_keyboardLeft_pressed();
     void on_b_keyboardDown_pressed();
     void on_b_keyboardRight_pressed();
-    void on_increaseThrottle_pressed();
-    void on_decreaseThrottle_pressed();
+    void on_b_keyboardTurnLeft_pressed();
+    void on_b_keyboardTurnRight_pressed();
 
     void on_b_keyboardUp_released();
     void on_b_keyboardLeft_released();
     void on_b_keyboardDown_released();
     void on_b_keyboardRight_released();
+    void on_b_keyboardTurnLeft_released();
+    void on_b_keyboardTurnRight_released();
 
     void on_b_refresh_pressed();
 
@@ -66,6 +76,8 @@ private:
     float kdown = 0.0;
     float kleft = 0.0;
     float kright = 0.0;
+    float kturnLeft = 0.0;
+    float kturnRight = 0.0;
 
     float jy = 0.0;
     float jx = 0.0;
