@@ -15,6 +15,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
+    void on_s_leftJoystickX_Throttle_sliderMovedf(float position);
+    void on_s_leftJoystickY_Throttle_sliderMovedf(float position);
+    void on_s_rightJoystickX_Throttle_sliderMovedf(float position);
+
     void on_increaseThrottle_pressed();
     void on_decreaseThrottle_pressed();
     void sendKeyboardData();
@@ -26,13 +30,10 @@ private slots:
     void on_s_joystickThrottle_sliderMoved(int position);
 
     void on_s_leftJoystickX_Throttle_sliderMoved(int position);
-    void on_s_leftJoystickX_Throttle_sliderMovedf(float position);
     void on_s_leftJoystickY_Throttle_sliderMoved(int position);
-    void on_s_leftJoystickY_Throttle_sliderMovedf(float position);
     //void on_s_leftTrigger_Throttle_sliderMoved(int position);
 
     void on_s_rightJoystickX_Throttle_sliderMoved(int position);
-    void on_s_rightJoystickX_Throttle_sliderMovedf(float position);
     //void on_s_rightJoystickY_Throttle_sliderMoved(int position);
     //void on_s_rightTrigger_Throttle_sliderMoved(int position);
 
