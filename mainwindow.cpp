@@ -3,6 +3,8 @@
 #include <QTimer>
 #include <QGamepadManager>
 
+#include <algorithm>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "settingsdialog.h"
@@ -74,16 +76,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
             case Qt::Key_F3: ui->b_keyboardAction_3->setDown(true), on_b_keyboardAction_3_pressed(); break;
             case Qt::Key_F4: ui->b_keyboardAction_4->setDown(true), on_b_keyboardAction_4_pressed(); break;
         }
-        switch(socketHandler->getSocketState())
-        {
-            case QAbstractSocket::SocketState::BoundState: logger->write(Logger::Level::WARNING, "Bound"); break;
-            case QAbstractSocket::SocketState::ClosingState: logger->write(Logger::Level::WARNING, "Closing"); break;
-            case QAbstractSocket::SocketState::ConnectedState: logger->write(Logger::Level::WARNING, "Connected"); break;
-            case QAbstractSocket::SocketState::ListeningState: logger->write(Logger::Level::WARNING, "Listening"); break;
-            case QAbstractSocket::SocketState::ConnectingState: logger->write(Logger::Level::WARNING, "Bound"); break;
-            case QAbstractSocket::SocketState::HostLookupState: logger->write(Logger::Level::WARNING, "HostLookup"); break;
-            case QAbstractSocket::SocketState::UnconnectedState: logger->write(Logger::Level::WARNING, "Unconnected"); break;
-        }
     }
 }
 
@@ -144,7 +136,9 @@ void MainWindow::on_s_keyboardThrottle_sliderMoved(int position) { ui->l_keyboar
 void MainWindow::sendKeyboardData()
 {
     if (!(socketHandler->sendMovementData(
-              QString::number(kup+kdown) + "," + QString::number(kleft+kright) + "," + QString::number(kturnLeft+kturnRight))))
+              QString::number(std::clamp(kup+kdown, MovementConstants::MinSpeed, MovementConstants::MaxSpeed)) + "," +
+              QString::number(std::clamp(kleft+kright, MovementConstants::MinSpeed, MovementConstants::MaxSpeed)) + "," +
+              QString::number(std::clamp(kturnLeft+kturnRight, MovementConstants::MinSpeed, MovementConstants::MaxSpeed)))))
     {
         logger->write(Logger::Level::WARNING, "Could not send data");
     }
@@ -175,7 +169,9 @@ void MainWindow::on_s_joystickThrottle_sliderMoved(int position) { ui->l_joystic
 void MainWindow::sendJoystickData()
 {
     if (!(socketHandler->sendMovementData(
-              QString::number(jy) + "," + QString::number(jx) + "," + QString::number(jz))))
+              QString::number(std::clamp(jy, MovementConstants::MinSpeed, MovementConstants::MaxSpeed), 'f', 4) + "," +
+              QString::number(std::clamp(jx, MovementConstants::MinSpeed, MovementConstants::MaxSpeed), 'f', 4) + "," +
+              QString::number(std::clamp(jz, MovementConstants::MinSpeed, MovementConstants::MaxSpeed), 'f', 4))))
     {
         logger->write(Logger::Level::WARNING, "Could not send data");
     }

@@ -2,7 +2,7 @@ QT       += core gui network widgets gamepad
 
 greaterThan(QT_MAJOR_VERSION, 5): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -23,7 +23,8 @@ SOURCES += \
     mainwindow.cpp \
     settingsdialog.cpp \
     sockethandler.cpp \
-    statushandler.cpp
+    statushandler.cpp \
+    wheelkinematicshandler.cpp
 
 HEADERS += \
     confighandler.h \
@@ -33,7 +34,8 @@ HEADERS += \
     mainwindow.h \
     settingsdialog.h \
     sockethandler.h \
-    statushandler.h
+    statushandler.h \
+    wheelkinematicshandler.h
 
 FORMS += \
     mainwindow.ui \
