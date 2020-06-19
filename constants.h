@@ -13,4 +13,9 @@ namespace StatusConstants {
 namespace SystemConstants {
     const static int Exit_Code_Reboot = -128572932;
 }
+
+namespace MovementConstants {
+    const static float MaxSpeed = 1.0;
+    const static float MinSpeed = -1.0;
+}
 #endif // CONSTANTS_H
