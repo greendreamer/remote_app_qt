@@ -1,6 +1,6 @@
 # QT Remote Control Client
 
-This is a QT Gui / Application that was made in QT Creator to be used as a bridge between a computer and a robot. Using QT Creator has allowed for greater flexability and allowed for quick stylistic changes to be made in minutes rather than the previous version of this software that used Pythons tkinter to hard code in the GUI. This is the "brains" of the remote control for a remote control mechanum car.
+This is a QT Gui / Application that was made in QT Creator to be used as a bridge between a computer and a robot. Using QT Creator has allowed for greater flexability and allowed for quick stylistic changes to be made in minutes rather than the previous version of this software that used Pythons tkinter to hard code in the GUI. This is the "brains" of the remote control for a remote control mechanum car. The server-side counter-part to this application can be found [here](https://github.com/baxtrax/QT-Remote-Control-Server)
 
 ## Details
 
