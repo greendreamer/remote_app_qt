@@ -2,6 +2,10 @@
 
 This is a QT Gui / Application that was made in QT Creator to be used as a bridge between a computer and a robot. Using QT Creator has allowed for greater flexability and allowed for quick stylistic changes to be made in minutes rather than the previous version of this software that used Pythons tkinter to hard code in the GUI. This is the "brains" of the remote control for a remote control mechanum car. The server-side counter-part to this application can be found [here](https://github.com/baxtrax/QT-Remote-Control-Server).
 
+## ----UPDATE----
+
+This program has been abandoned and is now being reworked from the ground up [here](https://github.com/baxtrax/QT-Remote-Control-Client_V2). There are already alot of new improvements so go check it out!
+
 ## Details
 
 This section will show current features of the GUI and up to date pictures of the GUI its self.
