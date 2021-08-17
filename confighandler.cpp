@@ -4,6 +4,7 @@
 
 ConfigHandler::ConfigHandler(QObject *parent) : QObject(parent)
 {
+    //Test
     fileName = "./config.txt";
     file = new QFile;
     file->setFileName(fileName);
